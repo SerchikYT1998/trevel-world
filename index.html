@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Travel & World</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+body{
+font-family:system-ui;
+background:#f5f7fb;
+}
+
+.page{display:none;}
+.page.active{display:block;}
+
+.hero{
+background:url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
+background-size:cover;
+background-position:center;
+}
+
+.overlay{
+background:rgba(0,0,0,0.45);
+}
+
+.card{
+transition:.3s;
+cursor:pointer;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="bg-white shadow flex justify-between px-10 py-6">
+
+<h1 class="text-2xl font-bold cursor-pointer" onclick="showPage('home')">
+Travel & World
+</h1>
+
+<nav class="space-x-6">
+
+<button onclick="showPage('tours')">Туры</button>
+<button onclick="showPage('hotels')">Отели</button>
+<button onclick="showPage('contacts')">Контакты</button>
+<button onclick="showPage('about')">О нас</button>
+
+</nav>
+
+</header>
+
+<!-- HOME -->
+
+<section id="home" class="page active">
+
+<div class="hero h-screen flex items-center justify-center">
+
+<div class="overlay text-center text-white p-20 rounded">
+
+<h2 class="text-6xl font-bold mb-6">
+Путешествуй по миру
+</h2>
+
+<p class="text-xl mb-10">
+Лучшие туры и отели
+</p>
+
+<button onclick="showPage('tours')" class="bg-blue-500 px-8 py-4 rounded text-white">
+Найти тур
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TOURS -->
+
+<section id="tours" class="page p-10">
+
+<h3 class="text-4xl text-center font-bold mb-10">
+Популярные туры
+</h3>
+
+<div class="grid md:grid-cols-4 gap-6">
+
+<div class="card bg-white shadow rounded">
+<img src="https://images.unsplash.com/photo-1541417904950-b855846fe074">
+<div class="p-4">
+<h4 class="font-bold">Анталия</h4>
+<p>Турция</p>
+<p class="text-blue-500">$650</p>
+</div>
+</div>
+
+<div class="card bg-white shadow rounded">
+<img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21">
+<div class="p-4">
+<h4 class="font-bold">Кемер</h4>
+<p>Турция</p>
+<p class="text-blue-500">$620</p>
+</div>
+</div>
+
+<div class="card bg-white shadow rounded">
+<img src="https://images.unsplash.com/photo-1572252009286-268acec5ca0a">
+<div class="p-4">
+<h4 class="font-bold">Хургада</h4>
+<p>Египет</p>
+<p class="text-blue-500">$720</p>
+</div>
+</div>
+
+<div class="card bg-white shadow rounded">
+<img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb">
+<div class="p-4">
+<h4 class="font-bold">Шарм-эль-Шейх</h4>
+<p>Египет</p>
+<p class="text-blue-500">$740</p>
+</div>
+</div>
+
+<div class="card bg-white shadow rounded">
+<img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c">
+<div class="p-4">
+<h4 class="font-bold">Дубай</h4>
+<p>ОАЭ</p>
+<p class="text-blue-500">$990</p>
+</div>
+</div>
+
+<div class="card bg-white shadow rounded">
+<img src="https://images.unsplash.com/photo-1526481280691-7818e3a3e94c">
+<div class="p-4">
+<h4 class="font-bold">Абу-Даби</h4>
+<p>ОАЭ</p>
+<p class="text-blue-500">$920</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- HOTELS -->
+
+<section id="hotels" class="page p-10">
+
+<h3 class="text-4xl text-center font-bold mb-10">
+Каталог отелей
+</h3>
+
+<div id="hotelList" class="grid md:grid-cols-4 gap-6"></div>
+
+</section>
+
+<!-- HOTEL PAGE -->
+
+<section id="hotelPage" class="page p-10">
+
+<button onclick="showPage('hotels')" class="text-blue-500 mb-6">
+← Назад
+</button>
+
+<div id="hotelInfo"></div>
+
+</section>
+
+<!-- CONTACTS -->
+
+<section id="contacts" class="page p-20 text-center">
+
+<h3 class="text-4xl font-bold mb-8">Контакты</h3>
+
+<p class="mb-4">Телефон: +1 000 000</p>
+
+<a href="https://t.me/serafimqz"
+class="bg-blue-500 text-white px-8 py-4 rounded">
+
+Telegram
+
+</a>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about" class="page p-20 text-center">
+
+<h3 class="text-4xl font-bold mb-6">О компании</h3>
+
+<p class="max-w-xl mx-auto text-gray-600">
+Travel & World — современное туристическое агентство.
+</p>
+
+</section>
+
+<script>
+
+function showPage(page){
+
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"))
+document.getElementById(page).classList.add("active")
+
+}
+
+/* hotels */
+
+const hotels=[
+
+{name:"Antalya Resort",city:"Анталия",country:"Турция",price:"$210",image:"https://images.unsplash.com/photo-1566073771259-6a8506099945",services:"SPA, бассейн"},
+{name:"Kemer Hotel",city:"Кемер",country:"Турция",price:"$180",image:"https://images.unsplash.com/photo-1551882547-ff40c63fe5fa",services:"Пляж"},
+{name:"Dubai Grand",city:"Дубай",country:"ОАЭ",price:"$320",image:"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b",services:"Luxury SPA"},
+{name:"Abu Dhabi Resort",city:"Абу-Даби",country:"ОАЭ",price:"$290",image:"https://images.unsplash.com/photo-1445019980597-93fa8acb246c",services:"Бассейн"},
+{name:"Hurghada Hotel",city:"Хургада",country:"Египет",price:"$200",image:"https://images.unsplash.com/photo-1501117716987-c8e1ecb210e1",services:"Море"},
+{name:"Sharm Resort",city:"Шарм",country:"Египет",price:"$230",image:"https://images.unsplash.com/photo-1505691723518-36a5ac3b2c00",services:"All Inclusive"}
+
+]
+
+function loadHotels(){
+
+const list=document.getElementById("hotelList")
+
+list.innerHTML=""
+
+hotels.forEach((h,i)=>{
+
+list.innerHTML+=`
+
+<div class="card bg-white shadow rounded"
+onclick="openHotel(${i})">
+
+<img src="${h.image}" class="rounded-t">
+
+<div class="p-4">
+
+<h4 class="font-bold">${h.name}</h4>
+<p>${h.city}</p>
+<p class="text-blue-500">${h.price}</p>
+
+</div>
+
+</div>
+
+`
+
+})
+
+}
+
+loadHotels()
+
+function openHotel(i){
+
+const h=hotels[i]
+
+document.getElementById("hotelInfo").innerHTML=`
+
+<img src="${h.image}" class="rounded mb-6">
+
+<h2 class="text-4xl font-bold mb-4">${h.name}</h2>
+
+<p>${h.city}, ${h.country}</p>
+
+<p class="mt-4">${h.services}</p>
+
+<p class="text-xl text-blue-500 font-bold mt-4">${h.price}</p>
+
+`
+
+showPage("hotelPage")
+
+}
+
+</script>
+
+</body>
+</html>
